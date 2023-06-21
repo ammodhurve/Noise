@@ -16,7 +16,7 @@ pipeline {
 	                 }}
 		stage('Deployment'){
 		    steps {
-			sh 'sshpass -p "dev" scp target/LoginWebAppApplicationWith-Docker.war guru@172.17.0.2:/home/ammo/slaveAZ/apache-tomcat-9.0.73/webapps
+			sh 'sshpass -p "dev" scp target/LoginWebAppApplicationWith-Docker.war ammo@172.17.0.2:/home/ammo/slaveAZ/apache-tomcat-9.0.73/webapps
 			}}
 		stage('Docker build'){
 		    steps {
@@ -24,8 +24,8 @@ pipeline {
 			}}
 		stage('Docker Login'){
 		    steps {
-		withCredentials([string(credentialsId: 'ammodhurve', variable: 'docker-amritahub
-{ sh ‘docker login -u amritahub -p${docker-amritahub}'                 
+		withCredentials([string(credentialsId: 'ammodhurve', variable: 'docker-amrita')]){
+                sh ‘docker login -u amritahub -p${docker-amritahub}'                 
 			echo 'Login Completed'
 			}
 			
@@ -35,4 +35,5 @@ pipeline {
  			sh 'docker push amritahub/pipelineimage11.1.2:$BUILD_NUMBER'           
 			echo 'Push Image Completed'       
     			}}
+	}}
 		
