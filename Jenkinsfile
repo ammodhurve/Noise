@@ -24,7 +24,7 @@ pipeline {
 			}}
 		stage('Docker Login'){
 		    steps {
-		withCredentials([string(credentialsId: 'ammodhurve', variable: 'docker-amrita')]){
+		withCredentials([string(credentialsId: 'ammodhurve', variable: 'ammodhurve')]) {
                 sh ‘docker login -u amritahub -p${docker-amritahub}'                 
 			echo 'Login Completed'
 			}
