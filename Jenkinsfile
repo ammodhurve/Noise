@@ -16,7 +16,7 @@ pipeline {
 	                 }}
 		stage('Deployment'){
 		    steps {
-			sh 'sshpass -p "dev" scp target/LoginWebAppApplicationWith-Docker.war ammo@172.17.0.2:/home/ammo/slaveAZ/apache-tomcat-9.0.73/webapps
+			sh 'sshpass -p "dev" scp target/Noise.war ammo@172.17.0.2:/home/ammo/slaveAZ/apache-tomcat-9.0.73/webapps
 			}}
 		stage('Docker build'){
 		    steps {
