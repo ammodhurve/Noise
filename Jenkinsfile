@@ -1,6 +1,6 @@
 pipeline {
 	agent{
-	label 'slave-AZ’
+	label 'slave-AZ'
 	}
 	parameters {
 		choice(name: 'ENVIRONMENT', choices: ['QA','UAT'], description: 'Pick Environment value')
